@@ -1,5 +1,7 @@
 $ docker run -it --name=local -v /c/Users/beckl/docker-pro:/usr/Downloads ubuntu /bin/bash
 
+$ docker start -i local
+
 node-v5.10.1-linux-x64.tar
 
 http://jingyan.baidu.com/article/6181c3e080f979152ef15387.html
