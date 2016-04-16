@@ -43,4 +43,10 @@ RUN redis-server /home/workspace/conf/redis.conf
 RUN echo "export TEST=\"test\"" >> /etc/profile
 RUN source /etc/profile
 
-EXPOSE 3000
+# setup git configurations and clone the repo onto local workspace
+RUN git config --global user.name "xxx"
+RUN git config --global user.email "xxx@xxx.com"
+RUN git config --global color.ui true
+RUN git clone https://xxx:xxx@github.com/xxx/xxx.git
+
+EXPOSE 3000 4000
