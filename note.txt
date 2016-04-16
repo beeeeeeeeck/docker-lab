@@ -1,8 +1,6 @@
 $ docker run -it --name=local -v /c/Users/beckl/docker-pro:/usr/windows ubuntu /bin/bash
 
-$ docker run -it --name=local -v /c/Users/beckl/docker-pro:/usr/windows test
-
-$ docker run -it --name=local -v /d/workspace:/home/pro ubuntu /bin/bash
+$ docker run -it --name=local -v /c/Users/beckl/workspace:/home/pro test
 
 $ docker start -i local
 
