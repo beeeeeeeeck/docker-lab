@@ -17,6 +17,8 @@ RUN mkdir conf
 RUN mkdir pid
 RUN mkdir log
 RUN mkdir github
+RUN mkdir shell
+COPY shell/* shell/
 
 # download and install node/npm
 RUN wget --tries=100 --retry-connrefused https://nodejs.org/dist/v5.10.1/node-v5.10.1-linux-x64.tar.xz
