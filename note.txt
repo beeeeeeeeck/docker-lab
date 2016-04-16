@@ -2,6 +2,8 @@ $ docker run -it --name=local -v /c/Users/beckl/docker-pro:/usr/windows ubuntu /
 
 $ docker run -it --name=local -v /c/Users/beckl/docker-pro:/usr/windows test
 
+$ docker run -it --name=local -v /d/workspace:/home/pro ubuntu /bin/bash
+
 $ docker start -i local
 
 node-v5.10.1-linux-x64.tar
