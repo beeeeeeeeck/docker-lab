@@ -7,7 +7,7 @@ RUN cp /etc/apt/sources.list /etc/apt/sources.list_bak
 RUN rm /etc/apt/sources.list
 COPY sources.list /etc/apt
 RUN apt-get update
-RUN apt-get install -y git xz-utils wget memcached redis-server make gcc python2.7
+RUN apt-get install -y git xz-utils wget memcached redis-server curl make gcc build-essential python2.7
 
 # setup workspace and create directories for runtime
 WORKDIR /home
@@ -27,11 +27,6 @@ RUN mv node-v5.10.1-linux-x64 /usr/local/node
 RUN chmod 755 /usr/local/node/* -R
 RUN sudo ln -s /usr/local/node/bin/node /usr/bin/node
 RUN sudo ln -s /usr/local/node/bin/npm /usr/bin/npm
-
-# install coffee-script
-RUN npm install coffee-script -g
-RUN sudo ln -s /usr/local/node/lib/node_modules/coffee-script/bin/coffee /usr/bin/coffee
-RUN sudo ln -s /usr/local/node/lib/node_modules/coffee-script/bin/cake /usr/bin/cake
 
 # start up memcached
 RUN memcached -d -u root -P /home/workspace/pid/memcached.pid
@@ -55,6 +50,12 @@ RUN git clone https://xxx:xxx@github.com/xxx/xxx.git # FIXME
 
 # install node packages and startup application
 WORKDIR xxx # FIXME
+RUN npm config set registry http://registry.cnpmjs.org
+# install coffee-script
+RUN npm install coffee-script -g
+RUN sudo ln -s /usr/local/node/lib/node_modules/coffee-script/bin/coffee /usr/bin/coffee
+RUN sudo ln -s /usr/local/node/lib/node_modules/coffee-script/bin/cake /usr/bin/cake
+RUN npm config set python python2.7
 RUN npm install
 
 EXPOSE 3000 4000 # FIXME
