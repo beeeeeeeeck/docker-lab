@@ -40,8 +40,9 @@ RUN sed -i "s/\/var\/log\/redis\/redis-server.log/\/home\/workspace\/log\/redis-
 RUN redis-server /home/workspace/conf/redis.conf
 
 # setup ENV variables
-RUN echo "export TEST=\"test\"" >> /etc/profile # FIXME
-RUN source /etc/profile
+# RUN echo "export TEST=\"test\"" >> /etc/profile # FIXME
+# RUN source /etc/profile
+ENV TEST test
 
 # setup git configurations and clone the repo onto local workspace
 WORKDIR github
