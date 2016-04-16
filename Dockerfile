@@ -2,18 +2,21 @@ FROM ubuntu:14.04
 
 MAINTAINER beckl <runbeck@163.com>
 
-# install required tool set
+# update apt-get source and install required tool set
+RUN cp /etc/apt/sources.list /etc/apt/sources.list_bak
+RUN rm /etc/apt/sources.list
+COPY sources.list /etc/apt
 RUN apt-get update
-RUN apt-get install -y git xz-utils wget memcached redis-server
+RUN apt-get install -y git xz-utils wget memcached redis-server make gcc python2.7
 
-# setup workspace
+# setup workspace and create directories for runtime
 WORKDIR /home
 RUN mkdir workspace
 WORKDIR workspace
-# create directories for runtime
 RUN mkdir conf
 RUN mkdir pid
 RUN mkdir log
+RUN mkdir github
 
 # download and install node/npm
 RUN wget --tries=100 --retry-connrefused https://nodejs.org/dist/v5.10.1/node-v5.10.1-linux-x64.tar.xz
@@ -40,13 +43,18 @@ RUN sed -i "s/\/var\/log\/redis\/redis-server.log/\/home\/workspace\/log\/redis-
 RUN redis-server /home/workspace/conf/redis.conf
 
 # setup ENV variables
-RUN echo "export TEST=\"test\"" >> /etc/profile
+RUN echo "export TEST=\"test\"" >> /etc/profile # FIXME
 RUN source /etc/profile
 
 # setup git configurations and clone the repo onto local workspace
-RUN git config --global user.name "xxx"
-RUN git config --global user.email "xxx@xxx.com"
+WORKDIR github
+RUN git config --global user.name "xxx" # FIXME
+RUN git config --global user.email "xxx@xxx.com" # FIXME
 RUN git config --global color.ui true
-RUN git clone https://xxx:xxx@github.com/xxx/xxx.git
+RUN git clone https://xxx:xxx@github.com/xxx/xxx.git # FIXME
 
-EXPOSE 3000 4000
+# install node packages and startup application
+WORKDIR xxx # FIXME
+RUN npm install
+
+EXPOSE 3000 4000 # FIXME
