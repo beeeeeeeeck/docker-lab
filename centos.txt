@@ -35,6 +35,9 @@ rm node-v5.10.1-linux-x64.tar
 mv node-v5.10.1-linux-x64 /usr/local/node
 chmod 755 /usr/local/node/* -R
 sudo ln -s /usr/local/node/bin/node /usr/bin/node
-sudo ln -s /usr/local/node/bin/npm /usr/bin/npm
+sudo ln -s /usr/local/node/bin/npm /usr/bin/npm 
+npm install coffee-script -g
+sudo ln -s /usr/local/node/lib/node_modules/coffee-script/bin/coffee /usr/bin/coffee
+sudo ln -s /usr/local/node/lib/node_modules/coffee-script/bin/cake /usr/bin/cake
 
 git clone --progress https://xxx:xxx@github.com/xxx/xxx.git
